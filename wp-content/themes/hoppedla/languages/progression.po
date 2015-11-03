@@ -1,0 +1,789 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in function
+#: growler/inc/template-tags.php:110
+msgid "%1$s %2$s"
+msgstr ""
+
+#. Text in function
+#: growler/comments.php:57
+msgid "&larr; Older Comments"
+msgstr ""
+
+#. Text in function
+#: growler/inc/template-tags.php:1
+msgid "&lsaquo; Previous"
+msgstr ""
+
+#. Text in function
+#: growler/content-single.php:58
+#: growler/content-blog-home.php:55
+#: growler/content.php:57
+msgid "<i class=\"fa fa-comments-o\"></i> 0"
+msgstr ""
+
+#. Text in function
+#: growler/inc/template-tags.php:73
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#. Text in function
+#: growler/image.php:44
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr ""
+
+#. Text in function
+#: growler/inc/template-tags.php:64
+msgid "<span>&larr;</span> Previous Article"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:211
+#: growler/widgets/latest-event-posts.php:224
+#: growler/widgets/two-column-home.php:154
+#: growler/widgets/two-column-home.php:207
+#: growler/widgets/latest-beer-posts.php:224
+#: growler/widgets/social-widget.php:135
+msgid "Add Image"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/social-widget.php:164
+msgid "Additional Text Field"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/two-column-home.php:236
+msgid "Adjust text higher or lower if using image on left column"
+msgstr ""
+
+#. Text in echo
+#: growler/archive-event.php:69
+msgid "Apologies, but no events were found."
+msgstr ""
+
+#. Text in echo
+#: growler/archive.php:17
+msgid "Archives"
+msgstr ""
+
+#. Text in echo
+#: growler/archive.php:17
+msgid "Asides"
+msgstr ""
+
+#. Text in function
+#: growler/archive.php:17
+msgid "Author: %s"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Background Colors"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-beer-posts.php:192
+msgid "Beer Category Slug<br>(Leave blank to pull all posts)"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Beer posts per column (2-4)"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Beer posts per page"
+msgstr ""
+
+#. Text in echo
+#: growler/archive-beers.php:17
+msgid "Beers"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Body Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Body Font Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Bread-Crumb Font Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Button Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Button Font Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Button Hover Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Button Hover Font Color"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:191
+#: growler/widgets/latest-event-posts.php:207
+#: growler/widgets/two-column-home.php:189
+#: growler/widgets/latest-beer-posts.php:207
+msgid "Button Icon"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:186
+#: growler/widgets/latest-event-posts.php:202
+#: growler/widgets/two-column-home.php:183
+#: growler/widgets/latest-beer-posts.php:202
+msgid "Button Link"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:181
+#: growler/widgets/latest-event-posts.php:197
+#: growler/widgets/two-column-home.php:178
+#: growler/widgets/latest-beer-posts.php:197
+msgid "Button Text"
+msgstr ""
+
+#. Text in echo
+#: growler/content-single.php:55
+#: growler/content.php:54
+msgid "By"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:230
+msgid "Check box for light heading"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-event-posts.php:244
+#: growler/widgets/latest-beer-posts.php:244
+msgid "Check box for light heading text"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/two-column-home.php:229
+msgid "Check box for light text color"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/two-column-home.php:242
+msgid "Check box to switch columns"
+msgstr ""
+
+#. Text in echo
+#: growler/comments.php:56
+msgid "Comment navigation"
+msgstr ""
+
+#. Text in echo
+#: growler/comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Content Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/content.php:79
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Copyright Text"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Default"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Display comments for pages?"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Dribbble Icon Link"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "DropBox Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/social-widget.php:212
+msgid "E-mail Address"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "E-mail Icon Link"
+msgstr ""
+
+#. Text in function
+#: growler/content-page.php:19
+#: growler/inc/template-tags.php:100
+#: growler/inc/template-tags.php:128
+#: growler/image.php:27
+msgid "Edit"
+msgstr ""
+
+#. Text in function
+#: growler/content-single-event.php:35
+msgid "Edit Event"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-event-posts.php:192
+msgid "Event Category Slug<br>(Leave blank to pull all posts)"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Event posts per column (2-4)"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Event posts per page"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Facebook Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:162
+msgid "Filter by Category"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/flickr-widget.php:105
+msgid "Flickr ID: (Find from"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Flickr Icon Link"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Font Colors"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Footer Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Footer Column Count (1-4)"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Footer Menu"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Footer Widget Background"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Footer Widgets"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Footer widgets"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/our-hours.php:53
+msgid "Friday"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Google Plus Icon Link"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Header Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Header Social Icons"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Heading Font Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Home Child Page Column Count (2-4)"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Homepage Child Pages Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Homepage Widgets"
+msgstr ""
+
+#. Text in echo
+#: growler/archive.php:17
+msgid "Images"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Instagram Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/404.php:23
+msgid "It looks like nothing was found at this location. "
+msgstr ""
+
+#. Text in echo
+#: growler/no-results.php:37
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/social-widget.php:172
+#: growler/widgets/social-widget.php:177
+#: growler/widgets/social-widget.php:182
+#: growler/widgets/social-widget.php:187
+#: growler/widgets/social-widget.php:192
+#: growler/widgets/social-widget.php:197
+#: growler/widgets/social-widget.php:202
+#: growler/widgets/social-widget.php:207
+msgid "Link"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "LinkedIn Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/archive.php:17
+msgid "Links"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/social-widget.php:129
+msgid "Logo Image"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Logo Width"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/social-widget.php:154
+msgid "Logo Width (EX:  180px )"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Main Hover Link Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Main Link Color"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/two-column-home.php:173
+msgid "Main Text"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Main Theme Settings"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Map Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/our-hours.php:41
+msgid "Monday"
+msgstr ""
+
+#. Text in echo
+#: growler/functions.php:304
+msgid "Navigate to..."
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Navigation Current Page Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Navigation Link Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Navigation Margin Top/bottom"
+msgstr ""
+
+#. Text in function
+#: growler/comments.php:58
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#. Text in function
+#: growler/inc/template-tags.php:77
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/newsletter-highlight.php:123
+msgid "Newsletter Embedded Form"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Newsletter Footer Widget"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Newsletter Footer widget"
+msgstr ""
+
+#. Text in function
+#: growler/inc/template-tags.php:1
+msgid "Next &rsaquo;"
+msgstr ""
+
+#. Text in function
+#: growler/image.php:45
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#. Text in function
+#: growler/inc/template-tags.php:65
+msgid "Next Article <span>&rarr;</span>"
+msgstr ""
+
+#. Text in echo
+#: growler/no-results.php:12
+msgid "Nothing Found"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-event-posts.php:184
+#: growler/widgets/latest-beer-posts.php:184
+msgid "Number of Posts"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:176
+msgid "Number of columns (1-4)"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-event-posts.php:188
+#: growler/widgets/latest-beer-posts.php:188
+msgid "Number of columns (2-4)"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/flickr-widget.php:110
+msgid "Number of flickr image to show"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:172
+msgid "Number of posts"
+msgstr ""
+
+#. Text in echo
+#: growler/404.php:13
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/two-column-home.php:147
+msgid "Optional Image in Left Column"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Page Title Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Page Title Font Color"
+msgstr ""
+
+#. Text in function
+#: growler/content-page.php:20
+#: growler/content.php:81
+#: growler/image.php:62
+msgid "Pages:"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Pagination/Beer Categories Background"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Pagination/Beer Categories Font Color"
+msgstr ""
+
+#. Text in echo
+#: growler/inc/template-tags.php:100
+msgid "Pingback:"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Pinterest Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/inc/template-tags.php:60
+msgid "Post navigation"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Primary Menu"
+msgstr ""
+
+#. Text in function
+#: growler/image.php:27
+msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\">%4$s &times; %5$s</a> in <a href=\"%6$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+#. Text in echo
+#: growler/archive.php:17
+msgid "Quotes"
+msgstr ""
+
+#. Text in function
+#: growler/no-results.php:29
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/our-hours.php:56
+msgid "Saturday"
+msgstr ""
+
+#. Text in function
+#: growler/search.php:14
+msgid "Search Results for: %s"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Set Header Fixed?"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Shop Sidebar"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Shop posts per column (2-4)"
+msgstr ""
+
+#. Text in function
+#: growler/functions.php:1
+msgid "Sidebar"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Sidebar Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Sidebar Border Bottom Color Color"
+msgstr ""
+
+#. Text in echo
+#: growler/no-results.php:33
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Sub-Navigation Background Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Sub-Navigation Hover Link Color"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Sub-Navigation Link Color"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/newsletter-highlight.php:116
+msgid "Summary Text"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/our-hours.php:59
+msgid "Sunday"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/social-widget.php:159
+msgid "Text Field"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Theme Logo"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Theme Settings"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/our-hours.php:50
+msgid "Thursday"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:155
+#: growler/widgets/latest-event-posts.php:178
+#: growler/widgets/two-column-home.php:142
+#: growler/widgets/latest-beer-posts.php:177
+#: growler/widgets/flickr-widget.php:100
+#: growler/widgets/newsletter-highlight.php:110
+msgid "Title"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/social-widget.php:123
+msgid "Title:"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/our-hours.php:44
+msgid "Tuesday"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Tumblr Icon Link"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "Twitter Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/archive.php:17
+msgid "Videos"
+msgstr ""
+
+#. Text in echo
+#: growler/content-event.php:28
+msgid "View Event"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/our-hours.php:47
+msgid "Wednesday"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:196
+#: growler/widgets/latest-event-posts.php:212
+#: growler/widgets/two-column-home.php:194
+#: growler/widgets/latest-beer-posts.php:212
+#: growler/widgets/newsletter-highlight.php:130
+msgid "Widget Background Color"
+msgstr ""
+
+#. Text in echo
+#: growler/widgets/latest-blog-posts.php:204
+#: growler/widgets/latest-event-posts.php:218
+#: growler/widgets/two-column-home.php:201
+#: growler/widgets/latest-beer-posts.php:218
+msgid "Widget Background Image"
+msgstr ""
+
+#. Text in function
+#: growler/inc/customizer.php:1
+msgid "YouTube Icon Link"
+msgstr ""
+
+#. Text in echo
+#: growler/inc/template-tags.php:132
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#. Text in echo
+#: growler/content-single.php:55
+#: growler/content.php:54
+msgid "in"
+msgstr ""

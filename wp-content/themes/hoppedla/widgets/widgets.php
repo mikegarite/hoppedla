@@ -1,0 +1,10 @@
+<?php
+get_template_part('widgets/flickr-widget');
+get_template_part('widgets/latest-blog-posts');
+get_template_part('widgets/latest-event-posts');
+get_template_part('widgets/latest-beer-posts');
+get_template_part('widgets/newsletter-highlight');
+get_template_part('widgets/two-column-home');
+get_template_part('widgets/social-widget');
+get_template_part('widgets/our-hours');
+?>
