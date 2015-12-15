@@ -18,16 +18,28 @@
 /** The name of the database for WordPress */
 //define('WP_CACHE', true); //Added by WP-Cache Manager
 //define( 'WPCACHEHOME', '/mnt/stor14-wc1-ord1/946190/www.hoppedla.com/web/content/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
-define('DB_NAME', 'hoppedla');
+// define('DB_NAME', 'hoppedla');
+
+// /** MySQL database username */
+// define('DB_USER', 'root');
+
+// * MySQL database password 
+// define('DB_PASSWORD', 'ZYer8sjJep');
+
+// /** MySQL hostname */
+// define('DB_HOST', 'localhost');
+
+define('DB_NAME', 'hoppedlawp');
 
 /** MySQL database username */
 define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'ZYer8sjJep');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
+
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');

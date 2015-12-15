@@ -18,7 +18,7 @@ get_header(); ?>
 
  <?php 
 
-				  $address = array('lat' => get_post_meta($post->ID, '_hl_brewery_latitude', true), 'lon' => get_post_meta($post->ID, '_hl_brewery_longitude', true), "title" => get_the_title(), "id" => $i++, "link" => get_the_permalink());
+				  $address = array('lat' => get_post_meta($post->ID, '_hl_brewery_latitude', true), 'lon' => get_post_meta($post->ID, '_hl_brewery_longitude', true), 'address' => get_post_meta($post->ID, '_hl_brewery_address', true), 'neighborhood' => get_post_meta($post->ID, '_hl_brewery_neighborhood', true), 'image' => get_post_meta($post->ID, '_hl_brewery_image', true), 'phone' => get_post_meta($post->ID, '_hl_brewery_phone', true), 'website' => get_post_meta($post->ID, '_hl_brewery_website', true), 'instagram' => get_post_meta($post->ID, '_hl_brewery_instagram', true), 'facebook' => get_post_meta($post->ID, '_hl_brewery_facebook', true),'untapped' => get_post_meta($post->ID, '_hl_brewery_untapped', true),'foursquare' => get_post_meta($post->ID, '_hl_brewery_foursquare', true),'description' => get_post_meta($post->ID, '_hl_brewery_wysiwyg', true), "title" => get_the_title(), "id" => $i++, "link" => get_the_permalink());
 				  array_push($addresses, $address);
 				?>
 
@@ -53,57 +53,58 @@ get_header(); ?>
 			<script>
 
 				var jArray= <?php echo json_encode($addresses); ?>;
-				console.log(jArray);
+				var map;
+		    var breweries_ = jArray;
+        var allMyMarkers = [];
+        function setMarkers(map, locations) {
+        var image = {
+          // This marker is 20 pixels wide by 32 pixels tall.
+          url : 'http://hoppedla.com/wp-content/themes/surfarama/library/images/marker.png'
+          // size: new google.maps.Size(20, 32),
+          // // The origin for this image is 0,0.
+          // origin: new google.maps.Point(0,0),
+          // // The anchor for this image is the base of the flagpole at 0,32.
+          // anchor: new google.maps.Point(0, 32)
+        };
+        // Shapes define the clickable region of the icon.
+        // The type defines an HTML &lt;area&gt; element 'poly' which
+        // traces out a polygon as a series of X,Y points. The final
+        // coordinate closes the poly by connecting to the first
+        // coordinate.
+        var shape = {
+            coords: [1, 1, 1, 20, 18, 20, 18 , 1],
+            type: 'poly'
+        };
+        for (var i = 0; i < locations.length; i++) {
 
-		var map;
-		var breweries_ = jArray;
-var allMyMarkers = [];
-function setMarkers(map, locations) {
-  // Add markers to the map
+      	var template;
+      		template = "<a data-id='"+locations[i].id+"' href='"+locations[i].link+"'>"+locations[i].title+"</a>";
+      		jQuery('#brewery-list').append(template);
+      
+        var myLatLng = new google.maps.LatLng(locations[i].lat, locations[i].lon);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: image,
+            shape: shape,
+            barid: locations[i].id,
+            address: locations[i].address,
+            description: locations[i].description,
+            facebook: locations[i].facebook,
+            foursquare: locations[i].foursquare,
+            image: locations[i].image,
+            instagram: locations[i].instagram,
+            link: locations[i].link,
+            neighborhood: locations[i].neighborhood,
+            phone: locations[i].phone,
+            title: locations[i].title,
+            untapped: locations[i].untapped,
+            website: locations[i].website
+        });
 
-  // Marker sizes are expressed as a Size of X,Y
-  // where the origin of the image (0,0) is located
-  // in the top left of the image.
-
-  // Origins, anchor positions and coordinates of the marker
-  // increase in the X direction to the right and in
-  // the Y direction down.
-  var image = {
-    // This marker is 20 pixels wide by 32 pixels tall.
-    url : 'http://hoppedla.com/wp-content/themes/surfarama/library/images/marker.png'
-    // size: new google.maps.Size(20, 32),
-    // // The origin for this image is 0,0.
-    // origin: new google.maps.Point(0,0),
-    // // The anchor for this image is the base of the flagpole at 0,32.
-    // anchor: new google.maps.Point(0, 32)
-  };
-  // Shapes define the clickable region of the icon.
-  // The type defines an HTML &lt;area&gt; element 'poly' which
-  // traces out a polygon as a series of X,Y points. The final
-  // coordinate closes the poly by connecting to the first
-  // coordinate.
-  var shape = {
-      coords: [1, 1, 1, 20, 18, 20, 18 , 1],
-      type: 'poly'
-  };
-  for (var i = 0; i < locations.length; i++) {
-
-  	var template;
-  		template = "<a data-id='"+locations[i].id+"' href='"+locations[i].link+"'>"+locations[i].title+"</a>";
-  		jQuery('#brewery-list').append(template);
   
-    var myLatLng = new google.maps.LatLng(locations[i].lat, locations[i].lon);
-    var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        icon: image,
-        shape: shape,
-        barid: locations[i].id
-    });
 
-  
-
-    function addInfoWindow(marker, message) {
+            function addInfoWindow(marker, message) {
                   var message = '<div id="iw-container">' +
                     '<div class="iw-title">Porcelain Factory of Vista Alegre</div>' +
                     '<div class="iw-content">' +
@@ -121,7 +122,7 @@ function setMarkers(map, locations) {
                   content: message
               });
               google.maps.event.addListener(marker, 'click', function() {                
-                  infoWindow.open(map, marker);
+                  runWindowPane(marker);
               });
           }
           addInfoWindow(marker, 'sup');
@@ -159,6 +160,24 @@ function setMarkers(map, locations) {
 
 
 }
+    function runWindowPane(marker){
+      console.log(marker);
+        var $ = jQuery;
+        $('.info-pane .address').text(marker.address);
+        $('.info-pane .description').text(marker.description);
+        $('.info-pane .facebook').text(marker.facebook);
+        $('.info-pane .foursquare').text(marker.foursquare);
+        $('.info-pane .image').attr('src',marker.image);
+        $('.info-pane .instagram').text(marker.instagram);
+        $('.info-pane .link').text(marker.link);
+        $('.info-pane .neighborhood').text(marker.neighborhood);
+        $('.info-pane .phone').text(marker.phone);
+        $('.info-pane .title').text(marker.title);
+        $('.info-pane .untapped').text(marker.untapped);
+        $('.info-pane .website').text(marker.website);
+    }
+
+
 		function initialize() {
 		  var mapOptions = {
 		    zoom: 10,
@@ -212,73 +231,28 @@ function setMarkers(map, locations) {
 				
 
 			</script>
-			<style>
-				#brewery-list{
-					width:30%;
-					position: absolute;
-					right:0;
-					top:115px;
-					
-					float:left;
-					background:#fff;
-					height:500px;
-					overflow-y: scroll;
-          display: none;
-				}
 
-				#brewery-list a{
-					width:96%;
-					display: block;
-					padding:15px 2%;
-					background:#fff;
-					color:#444;
-					text-transform: uppercase;
-					font-size:18px;
-				}
 
-				#brewery-list a:nth-child(even){
-					background:#f9f9f9;
-				}
 
-				#brewery-list a.active, #brewery-list a:hover{
-					background:#ccc;
-
-				}
-        #map-canvas{
-          width:100%;
-          height:100%;
-          top:0;
-          left:0;
-          position: absolute;
-          z-index: 99999999;
-        }
-
-        .map-filter{
-          position: absolute;
-          bottom:10px;
-          width:60%;
-          height:75px;
-          background:rgba(238, 238, 238, .8);
-          border:#ccc 2px solid;
-          border-radius: 4px;
-          margin-left:20%;
-          z-index: 999999999;
-        }
-
-        .map-filter button{
-          height:100%;
-          width:10%;
-          background:#ddd;
-          float: left;
-          border:none;
-          border-left:#ccc 1px solid;
-          border-right:#ccc 1px solid;
-        }
-        .map-filter button.active{
-          background:#999;
-        }
-			</style>
 				                <div id="map-canvas"></div>
+                        <div class="info-pane">
+                          
+                            <p class="address"></p>
+                            <p class="description"></p>
+                            <p class="facebook"></p>
+                            <p class="foursquare"></p>
+                            <img src="" class="image" />
+                            <p class="instagram"></p>
+                            <p class="link"></p>
+                            <p class="neighborhood"></p>
+                            <p class="phone"></p>
+                            <p class="title"></p>
+                            <p class="untapped"></p>
+                            <p class="website"></p>
+
+
+
+                        </div>
                         <div class="map-filter">
                           <button></button>
                           <button class="active"></button>

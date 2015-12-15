@@ -80,6 +80,12 @@ function wpb_sample_metaboxes( $meta_boxes ) {
 				'type' => 'text'
 			),
 			array(
+				'name' => 'Neighborhood',
+				'desc' => 'Neighborhood of brewery',
+				'id' => $prefix . 'brewery_neighborhood',
+				'type' => 'text'
+			),
+			array(
 				'name' => 'Latitude',
 				'desc' => 'Latitude of brewery',
 				'id' => $prefix . 'brewery_latitude',
@@ -137,6 +143,91 @@ function wpb_sample_metaboxes( $meta_boxes ) {
 				'name'    => __( 'Brewery Description', 'cmb' ),
 				'desc'    => __( 'Brewery description (optional)', 'cmb' ),
 				'id'      => $prefix . 'brewery_wysiwyg',
+				'type'    => 'wysiwyg',
+				'options' => array( 'textarea_rows' => 5, ),
+			),
+
+
+		)
+	);
+
+		$meta_boxes['bars'] = array(
+		'id'         => 'bars',
+		'title'      => __( 'Bars' ),
+		'pages'      => array( 'bars' ), // Tells CMB to use user_meta vs post_meta
+		'show_names' => true,
+		'cmb_styles' => false, // Show cmb bundled styles.. not needed on user profile page
+		'fields'     => array(
+			array(
+				'name' => 'Address',
+				'desc' => 'Address of bar',
+				'id' => $prefix . 'bar_address',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Neighborhood',
+				'desc' => 'Neighborhood of bar',
+				'id' => $prefix . 'bar_neighborhood',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Latitude',
+				'desc' => 'Latitude of bar',
+				'id' => $prefix . 'bar_latitude',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Longitude',
+				'desc' => 'Longitude of bar',
+				'id' => $prefix . 'bar_longitude',
+				'type' => 'text'
+			),
+			array(
+				'name' => __( 'Bar Image', 'cmb' ),
+				'desc' => __( 'Upload an image or enter a URL.', 'cmb' ),
+				'id'   => $prefix . 'bar_image',
+				'type' => 'file',
+			),
+			array(
+				'name' => __( 'Phone number', 'cmb' ),
+				'desc' => __( 'Phone number of bar', 'cmb' ),
+				'id'   => $prefix . 'bar_phone',
+				'type' => 'text',
+			),
+			array(
+				'name' => __( 'Website', 'cmb' ),
+				'desc' => __( 'Website address of bar', 'cmb' ),
+				'id'   => $prefix . 'bar_website',
+				'type' => 'text',
+			),
+			array(
+				'name' => __( 'Instagram', 'cmb' ),
+				'desc' => __( 'Instagram handle of bar', 'cmb' ),
+				'id'   => $prefix . 'bar_instagram',
+				'type' => 'text',
+			),
+			array(
+				'name' => __( 'Facebook', 'cmb' ),
+				'desc' => __( 'Facebook url of bar', 'cmb' ),
+				'id'   => $prefix . 'bar_facebook',
+				'type' => 'text',
+			),
+			array(
+				'name' => __( 'Untapped', 'cmb' ),
+				'desc' => __( 'Untapped url of bar', 'cmb' ),
+				'id'   => $prefix . 'bar_untapped',
+				'type' => 'text',
+			),
+			array(
+				'name' => __( 'Foursquare', 'cmb' ),
+				'desc' => __( 'Foursquare url of bar', 'cmb' ),
+				'id'   => $prefix . 'bar_foursquare',
+				'type' => 'text',
+			),
+			array(
+				'name'    => __( 'Bar Description', 'cmb' ),
+				'desc'    => __( 'Bar description (optional)', 'cmb' ),
+				'id'      => $prefix . 'bar_wysiwyg',
 				'type'    => 'wysiwyg',
 				'options' => array( 'textarea_rows' => 5, ),
 			),
