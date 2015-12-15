@@ -146,6 +146,17 @@ function wpb_sample_metaboxes( $meta_boxes ) {
 				'type'    => 'wysiwyg',
 				'options' => array( 'textarea_rows' => 5, ),
 			),
+			array(
+		    'name' => 'Brewery Filters',
+		    'desc' => 'Check filters for venue',
+		    'id' => $prefix . 'brewery_filter',
+		    'type' => 'multicheck',
+		    'options' => array(
+		        'pets' => 'Pets',
+		        'food' => 'Food',
+		        'favorite' => 'Favorite',
+		    )
+		),
 
 
 		)

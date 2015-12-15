@@ -18,7 +18,7 @@ get_header(); ?>
 
  <?php 
 
-				  $address = array('lat' => get_post_meta($post->ID, '_hl_brewery_latitude', true), 'lon' => get_post_meta($post->ID, '_hl_brewery_longitude', true), 'address' => get_post_meta($post->ID, '_hl_brewery_address', true), 'neighborhood' => get_post_meta($post->ID, '_hl_brewery_neighborhood', true), 'image' => get_post_meta($post->ID, '_hl_brewery_image', true), 'phone' => get_post_meta($post->ID, '_hl_brewery_phone', true), 'website' => get_post_meta($post->ID, '_hl_brewery_website', true), 'instagram' => get_post_meta($post->ID, '_hl_brewery_instagram', true), 'facebook' => get_post_meta($post->ID, '_hl_brewery_facebook', true),'untapped' => get_post_meta($post->ID, '_hl_brewery_untapped', true),'foursquare' => get_post_meta($post->ID, '_hl_brewery_foursquare', true),'description' => get_post_meta($post->ID, '_hl_brewery_wysiwyg', true), "title" => get_the_title(), "id" => $i++, "link" => get_the_permalink());
+				  $address = array('lat' => get_post_meta($post->ID, '_hl_brewery_latitude', true), 'lon' => get_post_meta($post->ID, '_hl_brewery_longitude', true), 'address' => get_post_meta($post->ID, '_hl_brewery_address', true), 'neighborhood' => get_post_meta($post->ID, '_hl_brewery_neighborhood', true), 'image' => get_post_meta($post->ID, '_hl_brewery_image', true), 'phone' => get_post_meta($post->ID, '_hl_brewery_phone', true), 'website' => get_post_meta($post->ID, '_hl_brewery_website', true), 'instagram' => get_post_meta($post->ID, '_hl_brewery_instagram', true), 'facebook' => get_post_meta($post->ID, '_hl_brewery_facebook', true),'untapped' => get_post_meta($post->ID, '_hl_brewery_untapped', true),'foursquare' => get_post_meta($post->ID, '_hl_brewery_foursquare', true),'description' => get_post_meta($post->ID, '_hl_brewery_wysiwyg', true),'filters' => get_post_meta($post->ID, '_hl_brewery_filter', true), "title" => get_the_title(), "id" => $i++, "link" => get_the_permalink());
 				  array_push($addresses, $address);
 				?>
 
@@ -52,114 +52,95 @@ get_header(); ?>
 
 			<script>
 
+        var $ = jQuery;
+        $(function(){
+
+          google.maps.event.addDomListener(window, 'load', initialize);
+
+          $('.filter').on('click', function(){
+              $(this).toggleClass('active');
+              var _filters = [];
+              $( ".filter.active" ).each(function( index ) {
+                _filters.push($(this).attr('id'));
+              });
+              filterMarkers(_filters);
+          })
+        })
+
+
+
 				var jArray= <?php echo json_encode($addresses); ?>;
 				var map;
 		    var breweries_ = jArray;
         var allMyMarkers = [];
-        function setMarkers(map, locations) {
-        var image = {
-          // This marker is 20 pixels wide by 32 pixels tall.
-          url : 'http://hoppedla.com/wp-content/themes/surfarama/library/images/marker.png'
-          // size: new google.maps.Size(20, 32),
-          // // The origin for this image is 0,0.
-          // origin: new google.maps.Point(0,0),
-          // // The anchor for this image is the base of the flagpole at 0,32.
-          // anchor: new google.maps.Point(0, 32)
-        };
-        // Shapes define the clickable region of the icon.
-        // The type defines an HTML &lt;area&gt; element 'poly' which
-        // traces out a polygon as a series of X,Y points. The final
-        // coordinate closes the poly by connecting to the first
-        // coordinate.
-        var shape = {
-            coords: [1, 1, 1, 20, 18, 20, 18 , 1],
-            type: 'poly'
-        };
+        function setMarkers(map, locations, c) {
+          
+          var image = {
+            url : 'http://hoppedla.com/wp-content/themes/surfarama/library/images/marker.png'
+          };
+   
+    
+   
         for (var i = 0; i < locations.length; i++) {
 
-      	var template;
+      	  var template;
       		template = "<a data-id='"+locations[i].id+"' href='"+locations[i].link+"'>"+locations[i].title+"</a>";
       		jQuery('#brewery-list').append(template);
       
-        var myLatLng = new google.maps.LatLng(locations[i].lat, locations[i].lon);
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            icon: image,
-            shape: shape,
-            barid: locations[i].id,
-            address: locations[i].address,
-            description: locations[i].description,
-            facebook: locations[i].facebook,
-            foursquare: locations[i].foursquare,
-            image: locations[i].image,
-            instagram: locations[i].instagram,
-            link: locations[i].link,
-            neighborhood: locations[i].neighborhood,
-            phone: locations[i].phone,
-            title: locations[i].title,
-            untapped: locations[i].untapped,
-            website: locations[i].website
-        });
+          var myLatLng = new google.maps.LatLng(locations[i].lat, locations[i].lon);
+          var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              icon: image,
+              barid: locations[i].id,
+              address: locations[i].address,
+              description: locations[i].description,
+              facebook: locations[i].facebook,
+              foursquare: locations[i].foursquare,
+              image: locations[i].image,
+              instagram: locations[i].instagram,
+              link: locations[i].link,
+              neighborhood: locations[i].neighborhood,
+              phone: locations[i].phone,
+              title: locations[i].title,
+              untapped: locations[i].untapped,
+              website: locations[i].website,
+              filters: locations[i].filters
+          });
 
-  
 
-            function addInfoWindow(marker, message) {
-                  var message = '<div id="iw-container">' +
-                    '<div class="iw-title">Porcelain Factory of Vista Alegre</div>' +
-                    '<div class="iw-content">' +
-                      '<div class="iw-subTitle">History</div>' +
-                      '<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
-                      '<p>Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial unit dedicated to porcelain production in Portugal. For the foundation and success of this risky industrial development was crucial the spirit of persistence of its founder, José Ferreira Pinto Basto. Leading figure in Portuguese society of the nineteenth century farm owner, daring dealer, wisely incorporated the liberal ideas of the century, having become "the first example of free enterprise" in Portugal.</p>' +
-                      '<div class="iw-subTitle">Contacts</div>' +
-                      '<p>VISTA ALEGRE ATLANTIS, SA<br>3830-292 Ílhavo - Portugal<br>'+
-                      '<br>Phone. +351 234 320 600<br>e-mail: geral@vaa.pt<br>www: www.myvistaalegre.com</p>'+
-                    '</div>' +
-                    '<div class="iw-bottom-gradient"></div>' +
-                  '</div>';
+          addInfoWindow(marker);
 
-              var infoWindow = new google.maps.InfoWindow({
-                  content: message
-              });
-              google.maps.event.addListener(marker, 'click', function() {                
-                  runWindowPane(marker);
-              });
+          allMyMarkers.push(marker); 
+
+          function addInfoWindow(marker) {
+                google.maps.event.addListener(marker, 'click', function() {                
+                runWindowPane(marker);
+            });
           }
-          addInfoWindow(marker, 'sup');
-
-    allMyMarkers.push(marker); 
 
 
-
-
-    google.maps.event.addListener(marker, "mouseover", function(data) {
-
-       var x = this.barid;
-
-
-       jQuery.fn.scrollTo = function(elem, speed) { 
-		    jQuery(this).animate({
-		        scrollTop:  jQuery(this).scrollTop() - jQuery(this).offset().top + jQuery(elem).offset().top - 100
-		    }, speed == undefined ? 1000 : speed); 
-		    return this; 
-		};
-
-		jQuery('#brewery-list a').removeClass('active');
-        jQuery('#brewery-list a[data-id="'+x+'"]').addClass('active');
-
-
-
-		jQuery("#brewery-list").scrollTo("a.active", 500);
-       
-       
-
-
-    });
+    // google.maps.event.addListener(marker, "mouseover", function(data) {
+    //   var x = this.barid;
+    //   jQuery.fn.scrollTo = function(elem, speed) { 
+		  //   jQuery(this).animate({
+		  //       scrollTop:  jQuery(this).scrollTop() - jQuery(this).offset().top + jQuery(elem).offset().top - 100
+		  //   }, speed == undefined ? 1000 : speed); 
+		  //   return this; 
+	   //  };
+		  // jQuery('#brewery-list a').removeClass('active');
+    //   jQuery('#brewery-list a[data-id="'+x+'"]').addClass('active');
+  		// jQuery("#brewery-list").scrollTo("a.active", 500);
+    // });
 
   }
 
 
 }
+
+
+
+
     function runWindowPane(marker){
       console.log(marker);
         var $ = jQuery;
@@ -191,43 +172,48 @@ get_header(); ?>
 		    center: new google.maps.LatLng(34.0500, -118.2500),
 		    styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a0d6d1"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#dedede"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#dedede"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f1f1f1"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
 		  };
-		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		    setMarkers(map, breweries_);
+		  
 
-
-		    
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		  setMarkers(map, breweries_, 'test');
 
 		}
 
+      filterMarkers = function(category) {
+        var c_;
+        for (i = 0; i < allMyMarkers.length; i++) {
+          marker = allMyMarkers[i];
+          if (category.length == 0) {
+            marker.setVisible(true);
+          } 
+          else {
+              // If is same category or category not picked
+              if (marker.filters.length) {
+             
+                  for (var z = 0; z < marker.filters.length; z++) {
+                       for (var c = 0; c < category.length; c++) {
+                  c_ = category[c];
+                    if (marker.filters[z] === c_) {
+                      console.log(marker.filters[z])
+                        console.log(c_);
 
-		function toggleBounce(selectedID) {
-        var pinID = selectedID.split('_');
-        // loop through our array & check with marker has same ID with the text
-        for(var j=0;j<allMyMarkers.length;j++){
-                if(allMyMarkers[j].barid == pinID){
-
-                        if (allMyMarkers[j].getAnimation() != null) {
-                                allMyMarkers[j].setAnimation(null);
-                        } else {
-                                allMyMarkers[j].setAnimation(google.maps.Animation.BOUNCE);
-                                map.panTo(allMyMarkers[j].getPosition());
-                                map.setZoom(11);
-                        }
-                        break; // stop continue looping
+                      marker.setVisible(true);
+                    }
+                    else{
+                  marker.setVisible(false);
                 }
-        }
-}
+                  };
+                };
+              }
+              // Categories don't match 
+              else {
+                marker.setVisible(false);
+              }
+                      }
+        };
+      }
+      		
 
-		jQuery(function(){
-			google.maps.event.addDomListener(window, 'load', initialize);
-
-			jQuery('#brewery-list').on('hover', 'a', function(){
-                var selectedID = jQuery(this).attr('data-id');
-                toggleBounce(selectedID);
-        	});
-
-
-		});
 				
 
 			</script>
@@ -254,10 +240,11 @@ get_header(); ?>
 
                         </div>
                         <div class="map-filter">
-                          <button></button>
+                          <button id="pets" class="filter"></button>
+                          <button id="food" class="filter"></button>
+                          <button id="favorite" class="filter"></button>
                           <button class="active"></button>
-                          <button></button>
-                          <button></button>
+
 
                         </div>
 				                <div id="brewery-list"></div>
