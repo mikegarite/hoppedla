@@ -30,10 +30,15 @@ get_header(); ?>
 <div class="width-container">
 	<div id="menu-index">			
 
-				<ul id="menu-sub-nav">
+
+		    <p>Bacon ipsum dolor amet meatloaf bresaola chicken prosciutto chuck hamburger. Bresaola filet mignon tongue meatball pork chop venison ribeye shank ham. Tenderloin pastrami ball tip, pork belly shoulder drumstick doner strip steak turducken. Landjaeger short loin tail salami porchetta brisket boudin ham hock. </p>
+
+<!-- 				<ul id="menu-sub-nav">
 					<?php echo progression_menu_category_nav(); ?>
 				</ul>
-				
+ -->
+
+ 				
 				<div id="menu_header">
 					<div id="menu-cat-description"><?php echo category_description( ); ?></div>
 				</div>

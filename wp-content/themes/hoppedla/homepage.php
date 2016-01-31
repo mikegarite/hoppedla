@@ -18,9 +18,30 @@ get_header(); ?>
 
  <?php 
 
-				  $address = array('lat' => get_post_meta($post->ID, '_hl_brewery_latitude', true), 'lon' => get_post_meta($post->ID, '_hl_brewery_longitude', true), 'address' => get_post_meta($post->ID, '_hl_brewery_address', true), 'neighborhood' => get_post_meta($post->ID, '_hl_brewery_neighborhood', true), 'image' => get_post_meta($post->ID, '_hl_brewery_image', true), 'phone' => get_post_meta($post->ID, '_hl_brewery_phone', true), 'website' => get_post_meta($post->ID, '_hl_brewery_website', true), 'instagram' => get_post_meta($post->ID, '_hl_brewery_instagram', true), 'facebook' => get_post_meta($post->ID, '_hl_brewery_facebook', true),'untapped' => get_post_meta($post->ID, '_hl_brewery_untapped', true),'foursquare' => get_post_meta($post->ID, '_hl_brewery_foursquare', true),'description' => get_post_meta($post->ID, '_hl_brewery_wysiwyg', true),'filters' => get_post_meta($post->ID, '_hl_brewery_filter', true), "title" => get_the_title(), "id" => $i++, "link" => get_the_permalink());
+				  $address = array('venue_type' => 'brewery', 'lat' => get_post_meta($post->ID, '_hl_brewery_latitude', true), 'lon' => get_post_meta($post->ID, '_hl_brewery_longitude', true), 'address' => get_post_meta($post->ID, '_hl_brewery_address', true), 'neighborhood' => get_post_meta($post->ID, '_hl_brewery_neighborhood', true), 'image' => get_post_meta($post->ID, '_hl_brewery_image', true), 'phone' => get_post_meta($post->ID, '_hl_brewery_phone', true), 'website' => get_post_meta($post->ID, '_hl_brewery_website', true), 'instagram' => get_post_meta($post->ID, '_hl_brewery_instagram', true), 'facebook' => get_post_meta($post->ID, '_hl_brewery_facebook', true),'untapped' => get_post_meta($post->ID, '_hl_brewery_untapped', true),'foursquare' => get_post_meta($post->ID, '_hl_brewery_foursquare', true),'description' => get_post_meta($post->ID, '_hl_brewery_wysiwyg', true),'filters' => get_post_meta($post->ID, '_hl_brewery_filter', true), "title" => get_the_title(), "id" => $i++, "link" => get_the_permalink());
 				  array_push($addresses, $address);
 				?>
+
+ <?php endwhile; 
+ wp_reset_postdata();
+ else : ?>
+ <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+ <?php endif; ?>
+                
+
+
+<?php $b_args = array( 'post_type' => 'bars', 'posts_per_page' => -1 ); ?>
+<?php $b_query = new WP_Query($b_args); ?>
+ <?php 
+ $bar_addresses = array();
+
+ $i = 1;
+ if ( $b_query->have_posts() ) : while ( $b_query->have_posts() ) : $b_query->the_post(); ?>
+ <?php 
+
+          $bar_address = array('venue_type' => 'bar', 'lat' => get_post_meta($post->ID, '_hl_bar_latitude', true), 'lon' => get_post_meta($post->ID, '_hl_bar_longitude', true), 'address' => get_post_meta($post->ID, '_hl_bar_address', true), 'neighborhood' => get_post_meta($post->ID, '_hl_bar_neighborhood', true), 'image' => get_post_meta($post->ID, '_hl_bar_image', true), 'phone' => get_post_meta($post->ID, '_hl_bar_phone', true), 'website' => get_post_meta($post->ID, '_hl_bar_website', true), 'instagram' => get_post_meta($post->ID, '_hl_bar_instagram', true), 'facebook' => get_post_meta($post->ID, '_hl_bar_facebook', true),'untapped' => get_post_meta($post->ID, '_hl_bar_untapped', true),'foursquare' => get_post_meta($post->ID, '_hl_bar_foursquare', true),'description' => get_post_meta($post->ID, '_hl_bar_wysiwyg', true),'filters' => get_post_meta($post->ID, '_hl_bar_filter', true), "title" => get_the_title(), "id" => $i++, "link" => get_the_permalink());
+          array_push($bar_addresses, $bar_address);
+        ?>
 
  <?php endwhile; 
  wp_reset_postdata();
@@ -45,7 +66,8 @@ get_header(); ?>
 				//   array_push($addresses, $address);
 				// endwhile;
 
-				
+				$venue_result = array();
+        $venue_result = array_merge($addresses, $bar_addresses);
 
 
 			?>
@@ -58,6 +80,7 @@ get_header(); ?>
           google.maps.event.addDomListener(window, 'load', initialize);
 
           $('.filter').on('click', function(){
+              $('.info-pane').removeClass('on');
               $(this).toggleClass('active');
               var _filters = [];
               $( ".filter.active" ).each(function( index ) {
@@ -67,20 +90,75 @@ get_header(); ?>
           })
         })
 
-
-
-				var jArray= <?php echo json_encode($addresses); ?>;
+				var jArray= <?php echo json_encode($venue_result); ?>;
+        console.log(jArray);
 				var map;
+
 		    var breweries_ = jArray;
         var allMyMarkers = [];
         function setMarkers(map, locations, c) {
-          
+          console.log(locations);
           var image = {
-            url : 'http://hoppedla.com/wp-content/themes/surfarama/library/images/marker.png'
+            url : '/wp-content/themes/hoppedla/images/marker.png'
           };
    
-    
+
+        $('button#locations').on('click', function(){
+          $('.info-pane').removeClass('on');
+          $('.modal').toggleClass('on');
+          runLocationsWindow(jArray);
+        })
+
+        $('.modal').on('click', function(){
+          $('.modal').toggleClass('on');
+        })
+
+        function runLocationsWindow(a){
+          var n_array = []
+          for (var i = 0; i < a.length; i++) {
+            var n = a[i].neighborhood;
+            
+            if(n != ''){
+                $('.modal .modal-info').empty();
+                $('.modal .modal-info').append("<ul></ul>")
+                n_array.push(n);
+            };
+          };
+            
+
+            var s_n = unique(n_array).sort();
+
+            for (var sn = 0; sn < s_n.length; sn++) {
+              $('.modal  .modal-info ul').append('<li class="'+s_n[sn].replace(/\s/g, '').replace(/[^a-z0-9\s]/gi, '').toLowerCase()+'"><h3>'+s_n[sn]+'</h3></li>')
+              
+            };
+
+             for (var gn = 0; gn < a.length; gn++) {
+                  var _n = a[gn].neighborhood;
+                  
+                  if(_n != ''){
+//                      $('.modal').empty();
+                      $('.modal  .modal-info .'+_n.replace(/\s/g, '').replace(/[^a-z0-9\s]/gi, '').toLowerCase()).append('<a href="'+a[gn].link+'">'+a[gn].title+'</a>')
+                      console.log(a[gn]);
+                  };
+          };
+
+
+
+        }
+          
+
+        function unique(list) {
+            var result = [];
+            $.each(list, function(i, e) {
+                if ($.inArray(e, result) == -1) result.push(e);
+            });
+            return result;
+        }
    
+   
+
+
         for (var i = 0; i < locations.length; i++) {
 
       	  var template;
@@ -91,7 +169,7 @@ get_header(); ?>
           var marker = new google.maps.Marker({
               position: myLatLng,
               map: map,
-              icon: image,
+              icon: '/wp-content/themes/hoppedla/images/'+locations[i].venue_type+'-marker.png',
               barid: locations[i].id,
               address: locations[i].address,
               description: locations[i].description,
@@ -144,16 +222,20 @@ get_header(); ?>
     function runWindowPane(marker){
       console.log(marker);
         var $ = jQuery;
+        $('.info-pane').addClass('on');
+        $('.info-pane').on('click', function(){
+          $('.info-pane').removeClass('on');
+        });
+        $('.info-pane .title').text(marker.title);
         $('.info-pane .address').text(marker.address);
         $('.info-pane .description').text(marker.description);
         $('.info-pane .facebook').text(marker.facebook);
         $('.info-pane .foursquare').text(marker.foursquare);
         $('.info-pane .image').attr('src',marker.image);
         $('.info-pane .instagram').text(marker.instagram);
-        $('.info-pane .link').text(marker.link);
+        $('.info-pane .link').attr('href',marker.link);
         $('.info-pane .neighborhood').text(marker.neighborhood);
         $('.info-pane .phone').text(marker.phone);
-        $('.info-pane .title').text(marker.title);
         $('.info-pane .untapped').text(marker.untapped);
         $('.info-pane .website').text(marker.website);
     }
@@ -170,7 +252,155 @@ get_header(); ?>
 			  streetViewControl: false,
 			  overviewMapControl: true,
 		    center: new google.maps.LatLng(34.0500, -118.2500),
-		    styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a0d6d1"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#dedede"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#dedede"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f1f1f1"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
+		    styles: [
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "hue": "#ffee00"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "hue": "#8dff00"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#00ff33"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#57ff00"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            },
+            {
+                "hue": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            },
+            {
+                "hue": "#ff0000"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#90ffa8"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    }
+]
 		  };
 		  
 
@@ -192,7 +422,7 @@ get_header(); ?>
              
                   for (var z = 0; z < marker.filters.length; z++) {
                        for (var c = 0; c < category.length; c++) {
-                  c_ = category[c];
+                    c_ = category[c];
                     if (marker.filters[z] === c_) {
                       console.log(marker.filters[z])
                         console.log(c_);
@@ -221,20 +451,23 @@ get_header(); ?>
 
 
 				                <div id="map-canvas"></div>
+                        <div class="modal">
+                            <div class="modal-info"></div>
+                            <div class="close-list"></div>
+                        </div>
                         <div class="info-pane">
-                          
-                            <p class="address"></p>
-                            <p class="description"></p>
-                            <p class="facebook"></p>
-                            <p class="foursquare"></p>
+                            <p class="title"></p>
                             <img src="" class="image" />
-                            <p class="instagram"></p>
-                            <p class="link"></p>
                             <p class="neighborhood"></p>
                             <p class="phone"></p>
-                            <p class="title"></p>
+                            <p class="address"></p>
+                            <p class="description"></p>
+                            <a href="" class="link">Visit Page</a>
                             <p class="untapped"></p>
                             <p class="website"></p>
+                            <p class="facebook"></p>
+                            <p class="foursquare"></p>
+                            <p class="instagram"></p>
 
 
 
@@ -243,8 +476,7 @@ get_header(); ?>
                           <button id="pets" class="filter"></button>
                           <button id="food" class="filter"></button>
                           <button id="favorite" class="filter"></button>
-                          <button class="active"></button>
-
+                          <button id="locations"></button>
 
                         </div>
 				                <div id="brewery-list"></div>

@@ -54,8 +54,7 @@
 			<span class="author-meta-pro"><?php _e( 'By', 'progression' ); ?> <?php the_author_posts_link(); ?> <?php _e( 'in', 'progression' ); ?></span> 
 			<span class="category-meta-pro"><?php the_category(', '); ?></span> 
 			
-			<span class="comment-meta-pro"><?php comments_popup_link( '' . __( '<i class="fa fa-comments-o"></i> 0', 'progression' ) . '', _x( '<i class="fa fa-comments-o"></i> 1', 'comments number', 'progression' ), _x( '<i class="fa fa-comments-o"></i> %', 'comments number', 'progression' ) ); ?></span>
-			<div class="clearfix"></div>
+			
 		</div>
 		<?php else: ?><div class="spacer-top"></div>
 		<?php endif; ?>
@@ -76,7 +75,7 @@
 			<div class="entry-content">	
 	
 				
-				<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'progression' ) ); ?>
+				<?php //the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'progression' ) ); ?>
 				
 				<?php
 					wp_link_pages( array(

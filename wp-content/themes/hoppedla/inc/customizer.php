@@ -9,7 +9,7 @@
 
 $header_default = array(
 	'width'         => 1800,
-	'height'        => 425,
+	'height'        => 125,
 	'header-text'    => false,
 	'default-image' => get_template_directory_uri() . '/images/page-title.jpg',
 );

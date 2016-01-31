@@ -37,7 +37,7 @@
 			<div class="featured-blog-progression">
 				<?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'large'); ?>
 				<a href="<?php echo $image[0]; ?>" rel="prettyPhoto">
-					<?php the_post_thumbnail('progression-blog'); ?>
+					<?php //the_post_thumbnail('progression-blog'); ?>
 				</a>
 			</div>
 			<?php else: ?>
@@ -59,21 +59,21 @@
 			<div class="clearfix"></div>
 		</div>
 		<?php endif; ?>
-		
-		<h2 class="blog-title"><?php the_title(); ?></h2>
-		
+		<?php if(!is_singular( 'breweries' )) { ?> 
+			<h2 class="blog-title"><?php the_title(); ?></h2>
+		<?php } ?>	
 		<div class="blog-container-text">
 			<?php the_content(); ?>
 			<?php the_tags('<div id="tags-pro">', ' ', '</div>'); ?> 
 
-			<?php progression_content_nav( 'nav-below' ); ?>
+			<?php // progression_content_nav( 'nav-below' ); ?>
 	
 		
 		
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' != get_comments_number() )
-					comments_template();
+			//	if ( comments_open() || '0' != get_comments_number() )
+				//	comments_template();
 			?>
 		</div>
 	

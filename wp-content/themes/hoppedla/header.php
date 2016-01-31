@@ -23,7 +23,7 @@
 
 <header<?php if (get_theme_mod( 'header_fix_progression', '0')) : ?> id="fixed-header-pro"<?php endif ?>>
 	<div class="width-container">
-		<h1 id="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_theme_mod( 'logo_upload', get_template_directory_uri() . '/images/logo.png' ); ?>" alt="<?php bloginfo('name'); ?>" width="<?php echo get_theme_mod( 'logo_width', '220' ); ?>" /></a></h1>
+		<h1 id="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory');?>/images/hoppedla-logo.png" alt="<?php bloginfo('name'); ?>" width="<?php echo get_theme_mod( 'logo_width', '220' ); ?>" /></a></h1>
 		<?php get_template_part( 'social', 'icons' ); ?>
 		<nav><?php wp_nav_menu( array('theme_location' => 'primary', 'depth' => 4, 'menu_class' => 'sf-menu', 'fallback_cb' => false) ); ?>
 		</nav>

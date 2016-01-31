@@ -30,7 +30,9 @@ jQuery(document).ready(function($) {
 */
 jQuery(document).ready(function($) {
 	 'use strict';
-	 	$('#main').css('margin-top', $(window).height() - 75)
+	 	if ($('body.home').length){
+				$('#main').css('margin-top', $(window).height() - 75)
+		}
 	 	$('#main').addClass('show');
     $('.gallery-progression').flexslider({
 		animation: "fade",      
