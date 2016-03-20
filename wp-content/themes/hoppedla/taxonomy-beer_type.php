@@ -31,7 +31,7 @@ get_header(); ?>
 	<div id="menu-index">			
 
 
-		    <p>Bacon ipsum dolor amet meatloaf bresaola chicken prosciutto chuck hamburger. Bresaola filet mignon tongue meatball pork chop venison ribeye shank ham. Tenderloin pastrami ball tip, pork belly shoulder drumstick doner strip steak turducken. Landjaeger short loin tail salami porchetta brisket boudin ham hock. </p>
+		    <p>When you ask a beer lover their favorite beer, it’s usually a question of their current mood, recent life events, the time of year, and the freshness of what’s available locally. Basically, it’s a list that rotates constantly. Here are six LA-brewed beers that we LOVE right now and absolutely recommend you trying for yourself.  </p>
 
 <!-- 				<ul id="menu-sub-nav">
 					<?php echo progression_menu_category_nav(); ?>

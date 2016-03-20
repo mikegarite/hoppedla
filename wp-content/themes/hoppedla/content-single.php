@@ -59,7 +59,7 @@
 			<div class="clearfix"></div>
 		</div>
 		<?php endif; ?>
-		<?php if(!is_singular( 'breweries' )) { ?> 
+		<?php if(!is_singular( array('breweries','bars') )) { ?> 
 			<h2 class="blog-title"><?php the_title(); ?></h2>
 		<?php } ?>	
 		<div class="blog-container-text">

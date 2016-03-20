@@ -8,7 +8,10 @@
 
 <div id="content-container">
 	<div class="content-container-pro">
+
+
 		
+		<? the_post_thumbnail(); ?>
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(

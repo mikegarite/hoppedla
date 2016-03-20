@@ -116,6 +116,18 @@ function progression_widgets_init() {
 		'before_title' => '<h5 class="widget-title">',
 		'after_title' => '</h5>',
 	) );
+
+		register_sidebar( array(
+		'name' => __( 'Blog Sidebar', 'progression' ),
+		'id' => 'sidebar-100',
+		'description'   => 'Blog Sidebar',
+		'before_widget' => '<div id="%1$s" class="sidebar-item widget %2$s">',
+		'after_widget' => '<div class="sidebar-divider"></div></div>',
+		'before_title' => '<h5 class="widget-title">',
+		'after_title' => '</h5>',
+	) );
+
+
 	
 	register_sidebar( array(
 		'name' => __( 'Shop Sidebar', 'progression' ),

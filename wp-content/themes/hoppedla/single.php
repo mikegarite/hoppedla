@@ -9,7 +9,10 @@ get_header(); ?>
 <div id="page-title">		
 	<div class="width-container">
 		<?php $page_for_posts = get_option('page_for_posts'); ?>
-		<h1><?php echo get_the_title($page_for_posts); ?></h1>
+    <?php while ( have_posts() ) : the_post(); ?>
+      <h1 class=""><?php the_title();?></h1>
+    <?php endwhile; // end of the loop. ?>
+		
 		<?php if(function_exists('bcn_display')): ?><div id="bread-crumb"><?php bcn_display()?></div><?php endif; ?>
 		<div class="clearfix"></div>
 	</div>
@@ -23,7 +26,7 @@ get_header(); ?>
 
 
 
-<?php if(is_singular( 'breweries' )) { ?> 
+<?php if(is_singular( array( 'breweries', 'bars' )  )) { ?> 
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<style>
 	   .panel-default{
@@ -35,7 +38,7 @@ get_header(); ?>
 	   	padding:0 10px;
 	   }
 	   .activity-list th, .activity-list td{
-	   	padding:20px 0 !important;
+	   	padding:20px !important;
 	   	border:none !important;
 	   	font-family: 'Noto Sans', sans-serif;
 	   }
@@ -96,7 +99,7 @@ get_header(); ?>
 
         </div>
         <div class="col-sm-10">
-             <h1 class=""><?php the_title();?></h1>
+             <!-- <h1 class=""><?php the_title();?></h1> -->
              <div class="address"></div>
                <div class='rating_bar'>
                   <!-- div element that contains full stars with percentage width, 
@@ -129,7 +132,7 @@ get_header(); ?>
             </div> -->
             <div class="panel panel-default" data-example-id="simple-table">
     <table class="table table-striped">
-      <caption>Latest Beer Checkins.</caption>
+      <h3>Latest Beer Checkins.</h3>
       <thead>
         <tr>
           <th>Date</th>
@@ -210,7 +213,7 @@ get_header(); ?>
 										}
 									// will display time in 10:30:23 format
 									
-							      			template  = '<tr><td>'+timeConverter(timestamp)+'</td><td>'+ad[i].beer.beer_name+'</td><td>'+ad[i].beer.beer_style+'</td><td>'+ad[i].beer.beer_abv+'</td></tr>';
+							      			template  = '<tr><td>'+timeConverter(timestamp)+'</td><td>'+ad[i].beer.beer_name+'</td><td>'+ad[i].beer.beer_style+'</td><td>'+ad[i].beer.beer_abv+'%</td></tr>';
 
 							      		jQuery('.activity-list').append(template);
 							      	};
@@ -244,10 +247,10 @@ get_header(); ?>
 									}
 
 									if(stats.contact.facebook.length){
-										jQuery('.social').append('<a class="facebook" href="'+addhttp(stats.contact.facebook)+'" target="_blank">.&nbsp;</a>');
+										jQuery('.social').append('<a class="facebook" href="'+addhttp(stats.contact.facebook)+'" target="_blank"><span style="visibility:hidden">.</span>&nbsp;</a>');
 									}
 									if(stats.contact.twitter.length){
-										jQuery('.social').append('<a class="twitter" href="http://twitter.com/'+stats.contact.twitter+'" target="_blank">.&nbsp;</a>');
+										jQuery('.social').append('<a class="twitter" href="http://twitter.com/'+stats.contact.twitter+'" target="_blank"><span style="visibility:hidden">.</span>&nbsp;</a>');
 									}
 									if(stats.contact.instagram.length){
 										//jQuery('.social').append('<a href="http://instagram.com/'+stats.contact.instagram+'" target="_blank">Instagram</a><br/>');
@@ -298,7 +301,7 @@ get_header(); ?>
 							      	for (var i = 0; i < main_data.length; i++) {
 							      		var template; 
 							      		if(main_data[i].beer.is_in_production === 1){
-							      			template  = '<li class="list-group-item text-right"><span class="pull-left"><strong class="">'+main_data[i].beer.beer_name+'</strong></span>'+main_data[i].beer.beer_abv+' ABV% <p>'+main_data[i].beer.beer_style+'</p></li>';							      		}
+							      			template  = '<li class="list-group-item text-right"><span class="pull-left"><strong class="">'+main_data[i].beer.beer_name+'</strong></span>'+main_data[i].beer.beer_abv+' ABV <p>'+main_data[i].beer.beer_style+'</p></li>';							      		}
 							      		jQuery('.beer-list').append(template);
 							      	};
 							      }
@@ -329,7 +332,7 @@ get_header(); ?>
 	<?php endwhile; // end of the loop. ?>
 	
 	</div>
-  <?php if(!is_singular( 'breweries' )) { ?> 
+  <?php if(!is_singular( array('breweries','bars' ))) { ?> 
 	<?php get_sidebar(); ?>
   <?php } ?>
 	<div class="clearfix"></div>

@@ -166,10 +166,17 @@ get_header(); ?>
       		jQuery('#brewery-list').append(template);
       
           var myLatLng = new google.maps.LatLng(locations[i].lat, locations[i].lon);
+          var image = {
+            url :'/wp-content/themes/hoppedla/images/'+locations[i].venue_type+'-marker.png',
+            scaledSize : new google.maps.Size(32, 41),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 41)
+          };
           var marker = new google.maps.Marker({
               position: myLatLng,
               map: map,
-              icon: '/wp-content/themes/hoppedla/images/'+locations[i].venue_type+'-marker.png',
+              icon: image,
+              flat:true,
               barid: locations[i].id,
               address: locations[i].address,
               description: locations[i].description,
@@ -223,13 +230,15 @@ get_header(); ?>
       console.log(marker);
         var $ = jQuery;
         $('.info-pane').addClass('on');
+        $('#map-canvas').addClass('on');
         $('.info-pane').on('click', function(){
           $('.info-pane').removeClass('on');
+          $('#map-canvas').removeClass('on');
         });
         $('.info-pane .title').text(marker.title);
-        $('.info-pane .address').text(marker.address);
+        $('.info-pane .address').html('<a target="_blank" href="http://maps.google.com/?q='+marker.address+'">'+marker.address+'</a>');
         $('.info-pane .description').text(marker.description);
-        $('.info-pane .facebook').text(marker.facebook);
+        $('.info-pane .facebook').html('<a target="_blank" href="'+marker.facebook+'"></a>');
         $('.info-pane .foursquare').text(marker.foursquare);
         $('.info-pane .image').attr('src',marker.image);
         $('.info-pane .instagram').text(marker.instagram);
@@ -237,7 +246,7 @@ get_header(); ?>
         $('.info-pane .neighborhood').text(marker.neighborhood);
         $('.info-pane .phone').text(marker.phone);
         $('.info-pane .untapped').text(marker.untapped);
-        $('.info-pane .website').text(marker.website);
+        $('.info-pane .website').html('<a target="_blank" href="'+marker.website+'"></a>');
     }
 
 
@@ -456,26 +465,32 @@ get_header(); ?>
                             <div class="close-list"></div>
                         </div>
                         <div class="info-pane">
-                            <p class="title"></p>
-                            <img src="" class="image" />
-                            <p class="neighborhood"></p>
-                            <p class="phone"></p>
+                            <h3 class="title"></h3>
+<!--                             <img src="" class="image" />
+ -->                            <p class="neighborhood"></p>
+                            
                             <p class="address"></p>
-                            <p class="description"></p>
-                            <a href="" class="link">Visit Page</a>
-                            <p class="untapped"></p>
+                            <p class="phone"></p>
+                            
+                            <!-- st -->
+                            
+                            <!-- <p class="untapped"></p> -->
+                            <div>
                             <p class="website"></p>
                             <p class="facebook"></p>
-                            <p class="foursquare"></p>
-                            <p class="instagram"></p>
+                            </div>
+                            <!-- <p class="foursquare"></p> -->
+                            <!-- <p class="instagram"></p> -->
+
+                            <a href="" class="link">Visit Page</a>
 
 
 
                         </div>
                         <div class="map-filter">
-                          <button id="pets" class="filter"></button>
+                        <!--   <button id="pets" class="filter"></button>
                           <button id="food" class="filter"></button>
-                          <button id="favorite" class="filter"></button>
+                          <button id="favorite" class="filter"></button> -->
                           <button id="locations"></button>
 
                         </div>

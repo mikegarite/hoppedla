@@ -51,7 +51,7 @@ audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
-body { margin: 0; font-size: 1em; line-height: 1.4; }
+body { margin: 0; font-size: 1em; line-height: 1.4; overflow-x:hidden; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
 abbr[title] { border-bottom: 1px dotted; }
@@ -263,6 +263,7 @@ header .social-ico {
 
 #main{
 	visibility: hidden;
+	background:url(images/main-bg.png);
 	 -webkit-transition: all .5s ease; -moz-transition: all .5s ease; transition: all .5s;
 }
 
@@ -386,14 +387,24 @@ body.page-template-homepage-php #main {padding:0px;}
 
 .single-breweries .container{
 	width:1150px;
+	padding:20px;
 }
 
 .single-breweries .photos div{
 	padding:0 !important;
 }
 
+.single-breweries .description{
+	width:80%;
+	clear: both;
+}
+
 .single-breweries .photos div .thumbnail{
 	margin-bottom: 0;
+}
+
+.single-bars .panel-default{
+	width:95%;
 }
 
 .single-breweries .panel-default{
@@ -418,6 +429,49 @@ body.page-template-page-full-width-php #content-container {width:100%;}
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.page-id-1184 .content-container-pro{
+	padding:50px;
+	text-align: center;
+}
+
+.page-id-1133 .content-container-pro{
+	padding:50px;
+}
+
+.page-id-1133 .content-container-pro input[type="submit"]{
+	    border-color: #cccccc;
+    outline: none;
+    color: #000000;
+}
+
+.page-id-1133 .content-container-pro input[type="submit"]:hover{
+	background:#179e55;
+	color:#fff;
+	border:#fff 1px solid
+}
+
+.page-id-1184 .content-container-pro h3{
+	max-width: 500px;
+	text-align: left;
+	
+	margin:0 auto;
+	margin-top:50px;
+	margin-bottom:50px;
+
+}
+
+.page-id-1184 .content-container-pro p{
+	max-width:500px;
+	text-align: left;
+	margin:0 auto;
+	line-height:30px;
+}
+
+.page-id-1184 .content-container-pro p img{
+	height:45px !important;
+	margin-top:25px;
+}
+
 .google-maps-expand {
 	margin:0px -42px 0px -42px;
 }
@@ -428,8 +482,58 @@ body.page-template-page-full-width-php #content-container {width:100%;}
 	-moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 	margin-bottom:30px;
+	float:left;
+	width:90%;
 } 
 
+
+#pyre_social_media-widget-feat-4 h5{
+	float:left;
+}
+
+#pyre_social_media-widget-feat-3 h5{
+	float:left;
+}
+
+#pyre_social_media-widget-feat-3 .social-ico, #pyre_social_media-widget-feat-4 .social-ico{
+	float:right;
+	margin-top:10px !important;
+}
+
+#mc4wp_form_widget-3 input[type="email"], #mc4wp_form_widget-4 input[type="email"]{
+	border:1px solid #e5e4e4;
+	padding:10px 15px;
+	background:none;
+	outline:none;
+}
+
+
+
+#mc4wp_form_widget-3 input[type="submit"], #mc4wp_form_widget-4 input[type="submit"]{
+	border:1px solid #cccccc;
+	background: #fff;
+    outline: none;
+    color: #000000;
+	padding:10px 15px;
+}
+
+#mc4wp_form_widget-3 input[type="submit"]:hover, #mc4wp_form_widget-4 input[type="submit"]:hover{
+	background:#179e55;
+	border:#fff 1px solid;
+	color:#fff;
+}
+
+#sidebar ul li{
+	list-style: none;
+	background:none !important;
+	padding-left:0px !important;
+	padding-bottom:5px !important;
+	padding-top:5px !important;
+}
+
+.mc4wp-response div p{
+	color:#cc5b44 !important;
+}
 
 /*
 =============================================== 05. HOMEPAGE STYLES ===============================================
@@ -456,8 +560,7 @@ body.page-template-page-full-width-php #content-container {width:100%;}
 
 .home-child-boxes-container {
 	position:relative;
-	text-align:center;
-	background:#000000;
+	text-align:center;	
 	padding-bottom:25px;
 }
 .home-child-image-pro {
@@ -468,12 +571,13 @@ body.page-template-page-full-width-php #content-container {width:100%;}
 .home-child-boxes-container i { padding-bottom:25px; }
 
 .floating-text-home {
-	top:50%;
-	margin-top:-35px;
 	width:100%;
-	position:absolute;
 	text-align:center;
 	display:block;
+}
+
+.floating-text-home h3{
+	color:#000;
 }
 
 .home-child-boxes-container .floating-text-home h3 { padding-top:0px; margin-top:12px;  }
@@ -519,7 +623,7 @@ body.page-template-page-full-width-php #content-container {width:100%;}
 =============================================== 06. FOOTER STYLES ===============================================
 */
 footer {
-	color:#333;
+	color:#777;
 	background:#fff !important;
 }
 #widget-area  {
@@ -538,12 +642,22 @@ footer a:hover {
 
 #widget-area h2 {color:#ffffff;}
 
+
+#widget-area {
+	float:left;
+}
+
 #widget-area .widget {
-	padding:62px 0px 55px 0px;
+
+}
+
+footer #widget-area .width-container{
+	max-width:200px;
+	float:left;
 }
 
 #copyrigh-text {
-	padding:40px 0px 36px 0px;
+	padding:25px 0px 20px 0px;
 }
 
 #copyrigh-text {
@@ -552,14 +666,14 @@ footer a:hover {
 }
 
 #widget-area .social-ico {
-	margin-top:25px;
+	margin-top:20px;
 	margin-left:0px;
 }
 
 footer #copyright ul.pro-footer-menu {
 	float:right;
 	margin:0px;
-	padding:39px 0px 25px 0px;
+	padding:25px 0px 20px 0px;
 	list-style:none;
 	font-size:14px;
 }
@@ -650,9 +764,9 @@ footer #copyright ul.pro-footer-menu li {
 
 .container-blog {
 	padding:5px 30px 10px 30px;
-	-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 	margin-bottom:50px;
 }
 
@@ -2459,9 +2573,9 @@ ul#menu-sub-nav li a  {
 
 .menu-index-pro {
 	margin:5px 0px 35px 0px;
-	-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .menu-content-pro {
@@ -2503,9 +2617,9 @@ ul#menu-sub-nav li a  {
 */
 .event-container-pro {
 	margin:0px 0px 35px 0px;
-	-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 .event-content-index {
 	padding:35px 25px 20px 25px;
@@ -2557,6 +2671,36 @@ body #main #events-full-calendar .fc-button-group button.fc-button {
 body #main #events-full-calendar .fc-button-group button.fc-button.fc-state-active {
 	background:#cccccc;
 }
+
+.home #main, .portfolio-posts-home, .portfolio-posts-home, .homepage-widget-blog{
+	background:#fff !important;
+}
+
+.pyre_homepage_media-widget-menu-3{
+	margin-top:50px;
+	padding-top:100px;
+	background:url(images/triangle-border.png) repeat-x left top !important;
+}
+
+.pyre_homepage_media-widget-port-2{
+	padding-top:100px;
+	background:url(images/shape-1-border.png) repeat-x left top !important;
+}
+
+.pyre_homepage_media-widget-2{
+	padding-top:100px;
+	background:url(images/shape-2-border.png) repeat-x left top !important;
+}
+
+.home #main{
+	padding-top:50px !important;
+	background:url(images/shape-3-border.png) repeat-x left top !important;
+}
+
+body #main #events-full-calendar{
+	background:#fff;
+}
+
 
 .fc-toolbar h2 {
 	color:#ffffff;
@@ -2767,7 +2911,14 @@ body #main  .width-container div.quantity input.input-text {
           left:0;
           position: absolute;
           z-index: 99999;
+          -webkit-transition: all .1s linear;
+			    -o-transition: all .1s linear;
+			    transition: all .1s linear;
         }
+
+         #map-canvas.on{
+         	margin-left:-20%;
+         }
 
         .map-filter{
           position: absolute;
@@ -2841,53 +2992,88 @@ body #main  .width-container div.quantity input.input-text {
         }
 
         .info-pane{
-        	width:30%;
-        	height:auto;
+        	width:20%;
+        	padding:20px;
+        	height:calc(100% - 130px);
         	position: absolute;
         	z-index: 9999999999;
-        	background:rgba(255, 255, 255, .95);
-        	top:0;
-        	left:-30%;
-        	margin-top:88px;
+        	top:-1px;
+        	right:calc(-21% - 25px);
+        	margin-top:90px;
+        		background:#fff;
+
         	-webkit-transition: all .2s linear;
 			    -o-transition: all .2s linear;
 			    transition: all .2s linear;
-
-			    border:rgba(255,100,80,1) 1px solid !important;
-			    border-top:none !important;
-			    border-left:none !important;
 			    padding-bottom:20px;
         }
 
         .info-pane.on{
-        	left:0;
+        	right:0;
         }
 
         .info-pane img{
         	max-width:130px;
-        	margin-left:20px;
+        	
         	float:left;
         }
 
         .info-pane .title{
         	font-size: 24px;
         	font-family: 'BenchNine';
-        	margin-left:20px;
+        	margin-bottom:0;
+        	
         }
 
+        .info-pane .facebook{
+	width:15px;
+	height:15px;
+	background: #000;
+	display: block;
+	float:left;
+	background:url(images/facebook-icon.png);	
+	background-size: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin-left:15px;
+	margin-top:2px;
+}
+
+.info-pane .website{
+	width:15px;
+	height:15px;
+	background: #000;
+	display: block;
+	float:left;
+	background:url(images/web-icon.png) !important;
+	background-size: 15px 15px !important;
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin-left:15px;
+	margin-top:2px;
+}
+
         .info-pane .phone{
-        	margin-left:20px;
+        	
         	float:left;
         }
 
         .info-pane .address{
-        	margin-left:20px;
+        	
         	float:left;
         }
 
         .info-pane .link{
-        	margin-left:20px;
+        	
         	float:left;
+        	position: absolute;
+        	bottom:50px;
+        	width:80%;
+        	text-align: center;
+        	border-radius: 30px;
+        	padding:10px;
+        	color:#fff;
+        	background:#179e55;
         }
 
         .modal-info ul{
@@ -2993,6 +3179,7 @@ body #main  .width-container div.quantity input.input-text {
 				   	color:#179e55;
 				   	font-family: 'BenchNine';
 				   	font-size:24px;
+				   	background:#fff !important;
 
         }
 
@@ -3013,6 +3200,10 @@ body #main  .width-container div.quantity input.input-text {
 				    border-radius: 0 30px 30px 0;
 				    	font-family: 'BenchNine';
 				   	font-size:24px;
+				   	border-left:#ff6450 1px solid !important;
+				   	 -webkit-transition: background .2s linear;
+          -o-transition: background .2s linear;
+          transition: background .2s linear;
         }
 
         #mc4wp_form_widget-2 input[type='submit']:hover{

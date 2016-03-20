@@ -1,110 +1,127 @@
 <?php
-/**
- * The base configurations of the WordPress.
- *
- * This file has the following configurations: MySQL settings, Table Prefix,
- * Secret Keys, WordPress Language, and ABSPATH. You can find more information
- * by visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing
- * wp-config.php} Codex page. You can get the MySQL settings from your web host.
- *
- * This file is used by the wp-config.php creation script during the
- * installation. You don't have to use the web site, you can just copy this file
- * to "wp-config.php" and fill in the values.
- *
- * @package WordPress
- */
-
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-//define('WP_CACHE', true); //Added by WP-Cache Manager
-//define( 'WPCACHEHOME', '/mnt/stor14-wc1-ord1/946190/www.hoppedla.com/web/content/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
-// define('DB_NAME', 'hoppedla');
-
-// /** MySQL database username */
-// define('DB_USER', 'root');
-
-// * MySQL database password 
-// define('DB_PASSWORD', 'ZYer8sjJep');
-
-// /** MySQL hostname */
-// define('DB_HOST', 'localhost');
-
-define('DB_NAME', 'hoppedlawp');
-
-/** MySQL database username */
-define('DB_USER', 'root');
-
-/** MySQL database password */
-define('DB_PASSWORD', 'root');
-
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
-
-
-/** Database Charset to use in creating database tables. */
+# Database Configuration
+define( 'DB_NAME', 'wp_hoppedla' );
+define( 'DB_USER', 'hoppedla' );
+define( 'DB_PASSWORD', 'nIfBJVVicFq5mjodaP3M' );
+define( 'DB_HOST', '127.0.0.1' );
+define( 'DB_HOST_SLAVE', '127.0.0.1' );
 define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', 'utf8_unicode_ci');
+$table_prefix = 'wp_';
 
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+# Security Salts, Keys, Etc
+define('AUTH_KEY',         'V&FAS[4Y6|(f6CRQ[]p3BUh1`}&:;(*O3Y=~[W:DnHxIY?[2?23U/|#yeT%A3j+O');
+define('SECURE_AUTH_KEY',  '.yu&!($vH+0k)q.-hwaIPL|*nPuRS,H4Tkn^#jiw^zNe|e~EA0)bGHV=MRm:N]|3');
+define('LOGGED_IN_KEY',    '>SFL2q=r)JZ@IoLC?LIYI|`N&D+n>uWKsKj0JNiH%ioY=L:Ar_#)XEI<pkPlMzrD');
+define('NONCE_KEY',        'J3j8O(3Bsrnk5@s/{^ ##hl:*Q#?!D-g`7P+t`~:ezROd-Vt1vI+Gq_6zl@X,[*c');
+define('AUTH_SALT',        '6j)jAHuh;D4N?*;x{^7H:)eQ1M(;3)WRv7?N(Z:uq@a1v4l,q}A*6|w8%tr)Lq$r');
+define('SECURE_AUTH_SALT', 'Uj}~AJLFp,6%@01@[yC*p,F@=icT{<NkEfRt9UGR@9:h1Uc~br,su;^Wm4%v>.n1');
+define('LOGGED_IN_SALT',   'Grt!:v^t.p=0?hGT(DJ[.4(M5t*{4V(qf!sdBfU8$|T!LRkiTUAv<=J<Y,%joMD3');
+define('NONCE_SALT',       '?4BJ9Y5S9cT?QQe]DZF4p7?qPOiII;qF1(/Uyhq4jsT>^]me*_U]g!yM}1L/iR`i');
 
-/**#@+
- * Authentication Unique Keys and Salts.
- *
- * Change these to different unique phrases!
- * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
- * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
- *
- * @since 2.6.0
- */
-define('AUTH_KEY',         '428H/PY9LS9d3]&+9ct;JdBmyGxbw1;}30FUQ14|Tzdjx/5H3zzNN@0_f5[M6?J9');
-define('SECURE_AUTH_KEY',  ',>qF?;FIrS3ZJ84N5E]Td9Dt$y^)nnQca*S|0{H|O7Y{^4J-6ICje^N.bq!zOoMY');
-define('LOGGED_IN_KEY',    '32Y$]3#NbzJ?0/06z9qO<%F]2dyRC-eG+#h=^;x,r*^s9Nz6XZVJB|IEc&"PZ8"K');
-define('NONCE_KEY',        '-cuY42NwHqYd%[kzV^)[%qA,5uF5CzclLH)P7u_OVI2yE=8]ZP"C^vs-Z8N04ZmP');
-define('AUTH_SALT',        '533cy>1;vqr!a{9!L4ap{D7W8UXci)3o+6AkS|c<pEXAAu8=[j9/XhO6#9(:.Ih%');
-define('SECURE_AUTH_SALT', ',>qF?;FIrS3ZJ84N5E]Td9Dt$y^)nnQca*S|0{H|O7Y{^4J-6ICje^N.bq!zOoMY');
-define('LOGGED_IN_SALT',   'jN/-&W"lE;7KZw[a?MWp9&RH2Zbur<xLAptf_nAogH9^$5?3fL,+pGt?4FiwrQ(3');
-define('NONCE_SALT',       '^9*Zxg+OXUszng|C3,o,wR^B[{9mMO>pY5<:_!HGt!&Q,&.R6fG|8kB3g7>4V#/h');
 
-/**#@-*/
+# Localized Language Stuff
 
-/**
- * WordPress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each a unique
- * prefix. Only numbers, letters, and underscores please!
- */
-$table_prefix  = 'wp_';
+define( 'WP_CACHE', TRUE );
 
-/**
- * WordPress Localized Language, defaults to English.
- *
- * Change this to localize WordPress. A corresponding MO file for the chosen
- * language must be installed to wp-content/languages. For example, install
- * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
- * language support.
- */
-define('WPLANG', '');
+define( 'WP_AUTO_UPDATE_CORE', false );
 
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- */
-define('WP_DEBUG', false);
-define('WP_DEBUG_DISPLAY', false);
+define( 'PWP_NAME', 'hoppedla' );
 
-define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
-define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
-define('WP_CONTENT_URL', '/wp-content');
-define('DOMAIN_CURRENT_SITE', $_SERVER['HTTP_HOST']);
+define( 'FS_METHOD', 'direct' );
 
-/* That's all, stop editing! Happy blogging. */
+define( 'FS_CHMOD_DIR', 0775 );
 
-/** Absolute path to the WordPress directory. */
+define( 'FS_CHMOD_FILE', 0664 );
+
+define( 'PWP_ROOT_DIR', '/nas/wp' );
+
+define( 'WPE_APIKEY', '185de0d13a7fb670ffb531036507da88008a65d5' );
+
+define( 'WPE_FOOTER_HTML', "" );
+
+define( 'WPE_CLUSTER_ID', '33765' );
+
+define( 'WPE_CLUSTER_TYPE', 'pod' );
+
+define( 'WPE_ISP', true );
+
+define( 'WPE_BPOD', false );
+
+define( 'WPE_RO_FILESYSTEM', false );
+
+define( 'WPE_LARGEFS_BUCKET', 'largefs.wpengine' );
+
+define( 'WPE_SFTP_PORT', 2222 );
+
+define( 'WPE_LBMASTER_IP', '162.242.247.25' );
+
+define( 'WPE_CDN_DISABLE_ALLOWED', true );
+
+define( 'DISALLOW_FILE_MODS', FALSE );
+
+define( 'DISALLOW_FILE_EDIT', FALSE );
+
+define( 'DISABLE_WP_CRON', false );
+
+define( 'WPE_FORCE_SSL_LOGIN', false );
+
+define( 'FORCE_SSL_LOGIN', false );
+
+/*SSLSTART*/ if ( isset($_SERVER['HTTP_X_WPE_SSL']) && $_SERVER['HTTP_X_WPE_SSL'] ) $_SERVER['HTTPS'] = 'on'; /*SSLEND*/
+
+define( 'WPE_EXTERNAL_URL', false );
+
+define( 'WP_POST_REVISIONS', FALSE );
+
+define( 'WPE_WHITELABEL', 'wpengine' );
+
+define( 'WP_TURN_OFF_ADMIN_BAR', false );
+
+define( 'WPE_BETA_TESTER', false );
+
+umask(0002);
+
+$wpe_cdn_uris=array ( );
+
+$wpe_no_cdn_uris=array ( );
+
+$wpe_content_regexs=array ( );
+
+$wpe_all_domains=array ( 0 => 'hoppedla.wpengine.com', );
+
+$wpe_varnish_servers=array ( 0 => 'pod-33765', );
+
+$wpe_special_ips=array ( 0 => '162.242.247.25', );
+
+$wpe_ec_servers=array ( );
+
+$wpe_largefs=array ( );
+
+$wpe_netdna_domains=array ( );
+
+$wpe_netdna_domains_secure=array ( );
+
+$wpe_netdna_push_domains=array ( );
+
+$wpe_domain_mappings=array ( );
+
+$memcached_servers=array ( );
+define('WPLANG','');
+
+# WP Engine ID
+
+
+
+# WP Engine Settings
+
+
+
+
+
+# That's It. Pencils down
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
-
-/** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+$_wpe_preamble_path = null; if(false){}

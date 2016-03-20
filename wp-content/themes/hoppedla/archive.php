@@ -13,6 +13,9 @@ get_header(); ?>
 
 <div id="page-title">		
 	<div class="width-container">
+
+
+
 		<h1>
 			<?php
 				if ( is_category() ) :
@@ -96,8 +99,18 @@ get_header(); ?>
 			
 		<?php endif; ?>
 	</div>
-	
+
+
+				<?php if(is_category( 'news' )){?>
+				<div id="sidebar">
+
+					<?php dynamic_sidebar('sidebar-100'); ?>
+					</div>
+			<?} else{ ?>
 	<?php get_sidebar(); ?>
+
+				<? } ?>
+	
 	<div class="clearfix"></div>
 </div>
 
