@@ -57,35 +57,23 @@
         
         
   
-</div>  
-
       
-          <?php if(is_singular( array( 'bars' )  )) {?>
-            <script>
-              var venue_type="bar";
-              var venue_id = <?php echo get_post_meta($post->ID, '_hl_untappd_id', true); ?>;
-            </script>
-          <?}?> 
-
-          <?php if(is_singular( array( 'breweries' )  )) {?>
-            <script>var venue_type="brewery";</script>
-          <?}?> 
+    
 
         
           
             <script>
+              var venue_id = <?php echo get_post_meta($post->ID, '_hl_untappd_id', true); ?>;
 
-              if(venue_type == 'bar'){
+              console.log('dwflsdkfjsldkfj')
                       var url_ = 'https://api.untappd.com/v4/venue/info/'+venue_id+'?client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';       
 
-              }
 
-              if(venue_type == 'brewery'){
 
 
               var title = "<?php echo get_the_title();?>";
               
-              console.log(title);
+              console.log(venue_id);
 
                     var url_ = 'https://api.untappd.com/v4/search/brewery?q='+title+'&client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';
 
@@ -228,7 +216,6 @@
                 }
               });
 
-              }
 
 
 

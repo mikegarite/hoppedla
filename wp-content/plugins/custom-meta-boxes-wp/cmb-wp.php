@@ -80,6 +80,12 @@ function wpb_sample_metaboxes( $meta_boxes ) {
 				'type' => 'text'
 			),
 			array(
+				'name' => 'Untapped ID',
+				'desc' => 'untappd Id',
+				'id' => $prefix . 'untappd_id',
+				'type' => 'text'
+			),
+			array(
 				'name' => 'Neighborhood',
 				'desc' => 'Neighborhood of brewery',
 				'id' => $prefix . 'brewery_neighborhood',
@@ -173,6 +179,12 @@ function wpb_sample_metaboxes( $meta_boxes ) {
 				'name' => 'Address',
 				'desc' => 'Address of bar',
 				'id' => $prefix . 'bar_address',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Untapped ID',
+				'desc' => 'untappd Id',
+				'id' => $prefix . 'untappd_id',
 				'type' => 'text'
 			),
 			array(

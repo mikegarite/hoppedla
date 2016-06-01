@@ -1,0 +1,41 @@
+[24-May-2016 22:39:13 UTC] WordPress database error The used table type doesn't support FULLTEXT indexes for query CREATE TABLE `_mig_wp_posts` (
+  `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `post_content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_title` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_excerpt` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'publish',
+  `comment_status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'open',
+  `ping_status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'open',
+  `post_password` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `post_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `to_ping` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pinged` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `post_content_filtered` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_parent` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `guid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `menu_order` int(11) NOT NULL DEFAULT '0',
+  `post_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'post',
+  `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `comment_count` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+  KEY `post_parent` (`post_parent`),
+  KEY `post_author` (`post_author`),
+  KEY `post_name` (`post_name`(191)),
+  FULLTEXT KEY `yarpp_title` (`post_title`),
+  FULLTEXT KEY `yarpp_content` (`post_content`)
+) ENGINE=InnoDB AUTO_INCREMENT=2212 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci made by do_action('wp_ajax_wpsdb_migrate_table'), call_user_func_array, WPSDB->ajax_migrate_table, WPSDB->process_chunk
+[24-May-2016 23:09:18 UTC] WordPress database error Duplicate key name 'meta_key' for query ALTER TABLE wp_commentmeta ADD KEY meta_key (meta_key) made by wp_upgrade, make_db_current_silent, dbDelta
+[24-May-2016 23:09:18 UTC] WordPress database error Duplicate key name 'meta_key' for query ALTER TABLE wp_postmeta ADD KEY meta_key (meta_key) made by wp_upgrade, make_db_current_silent, dbDelta
+[24-May-2016 23:09:18 UTC] WordPress database error Duplicate entry '0' for key 'PRIMARY' for query INSERT INTO wp_options (option_name, option_value, autoload) VALUES ('gzipcompression', '0', 'yes'), ('advanced_edit', '0', 'yes') made by wp_upgrade, upgrade_all, populate_options
+[24-May-2016 23:11:11 UTC] WordPress database error Duplicate key name 'meta_key' for query ALTER TABLE wp_usermeta ADD KEY meta_key (meta_key) made by wp_upgrade, make_db_current_silent, dbDelta
+[24-May-2016 23:11:11 UTC] WordPress database error Duplicate key name 'slug' for query ALTER TABLE wp_terms ADD UNIQUE KEY slug (slug) made by wp_upgrade, make_db_current_silent, dbDelta
+[24-May-2016 23:11:11 UTC] WordPress database error Duplicate key name 'name' for query ALTER TABLE wp_terms ADD KEY name (name) made by wp_upgrade, make_db_current_silent, dbDelta
+[24-May-2016 23:11:11 UTC] WordPress database error Duplicate key name 'meta_key' for query ALTER TABLE wp_commentmeta ADD KEY meta_key (meta_key) made by wp_upgrade, make_db_current_silent, dbDelta
+[24-May-2016 23:11:11 UTC] WordPress database error Duplicate key name 'meta_key' for query ALTER TABLE wp_postmeta ADD KEY meta_key (meta_key) made by wp_upgrade, make_db_current_silent, dbDelta
+[24-May-2016 23:11:11 UTC] WordPress database error Duplicate key name 'post_name' for query ALTER TABLE wp_posts ADD KEY post_name (post_name) made by wp_upgrade, make_db_current_silent, dbDelta
