@@ -322,7 +322,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6450', end
 body.page-template-homepage-php #main {padding:0px;}
 #content-container {float:left; width:70%; }
 .single-breweries #content-container{
-	width:100%;
+	max-width:100%;
 }
 
 .single-breweries .facebook{
@@ -386,7 +386,7 @@ body.page-template-homepage-php #main {padding:0px;}
 
 
 .single-breweries .container{
-	width:1150px;
+	max-width:1150px;
 	padding:20px;
 }
 
@@ -3223,3 +3223,50 @@ body #main  .width-container div.quantity input.input-text {
         #mc4wp_form_widget-2 label{
         	display: none !important;
         }
+
+
+.mobile .info-pane{
+		display: none;
+	}
+
+.mobile #page-title h1{
+	font-size:24px;
+}
+
+.mobile .ism_template_9{
+	display: none;
+}
+
+.mobile .activity-list th, .mobile .activity-list td{
+	padding:10px !important;
+}
+
+.mobile #mc4wp_form_widget-2 input[type='submit'] {
+    border: none;
+    background: #fff;
+    padding: 10px 25px;
+    width: 30%;
+    outline: none;
+    margin-left: -10px;
+    color: #179e55;
+    border-radius: 0 30px 30px 0;
+    font-family: 'BenchNine';
+    font-size: 18px;
+    border-left: #ff6450 1px solid !important;
+    -webkit-transition: background .2s linear;
+    -o-transition: background .2s linear;
+    transition: background .2s linear;
+}
+
+.mobile #mc4wp_form_widget-2 input[type='email'] {
+    border: none;
+    padding: 10px 25px;
+    outline: none;
+    text-align: center;
+    width: 60%;
+    border-radius: 30px 0 0 30px;
+    color: #179e55;
+    font-family: 'BenchNine';
+    font-size: 18px;
+    background: #fff !important;
+}

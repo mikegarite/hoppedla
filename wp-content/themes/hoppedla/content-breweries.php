@@ -60,34 +60,22 @@
 </div>  
 
       
-          <?php if(is_singular( array( 'bars' )  )) {?>
-            <script>
-              var venue_type="bar";
-              var venue_id = <?php echo get_post_meta($post->ID, '_hl_untappd_id', true); ?>;
-            </script>
-          <?}?> 
-
-          <?php if(is_singular( array( 'breweries' )  )) {?>
-            <script>var venue_type="brewery";</script>
-          <?}?> 
-
-        
-          
             <script>
 
-              if(venue_type == 'bar'){
-                      var url_ = 'https://api.untappd.com/v4/venue/info/'+venue_id+'?client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';       
-
-              }
-
-              if(venue_type == 'brewery'){
+            
 
 
               var title = "<?php echo get_the_title();?>";
               
               console.log(title);
 
-                    var url_ = 'https://api.untappd.com/v4/search/brewery?q='+title+'&client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';
+           
+           
+           
+                        var venue_id = <?php echo get_post_meta($post->ID, '_hl_untappd_id', true); ?>;
+
+                      var url_ = 'https://api.untappd.com/v4/venue/info/'+venue_id+'?client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';       
+
 
                       var _data = [];
               jQuery.ajax({
@@ -97,15 +85,14 @@
                 data: {},
                 success: function(data) {
                   console.log(data);
-                    var brewery_id = data.response.brewery.items[0].brewery.brewery_id;
-                    console.log(brewery_id);
-                    var brewery_url = 'https://api.untappd.com/v4/brewery/info/'+brewery_id+'?client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';
-                    var activity_url = 'https://api.untappd.com/v4/brewery/checkins/'+brewery_id+'?client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';
+                    var brewery_url = 'https://api.untappd.com/v4/venu/info/'+venue_id+'?client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';
+                    var activity_url = 'https://api.untappd.com/v4/venue/checkins/'+venue_id+'?client_id=ba87167981fb4eff95cdbda7f1019d1a&client_secret=31a111876e0fb9f738c9aa4347348b39';
                     jQuery.ajax({
                     url: activity_url,
                     dataType: 'json',
                     data: {},
                     success: function(activityData) {
+                      console.log(activityData);
                       ad = activityData.response.checkins.items;
 
                       for (var i = 0; i < 25; i++) {
@@ -228,7 +215,6 @@
                 }
               });
 
-              }
 
 
 
